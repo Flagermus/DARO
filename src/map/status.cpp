@@ -9517,6 +9517,8 @@ static int status_get_sc_interval(enum sc_type type)
  */
 t_tick status_get_sc_def(struct block_list *src, struct block_list *bl, enum sc_type type, int rate, t_tick tick, unsigned char flag)
 {
+	// DARO - Fixed status effect duration
+	flag |= SCSTART_NOTICKDEF;
 	/// Resistance rate: 10000 = 100%
 	/// Example:	50% (5000) -> sc_def = 5000 -> 25%;
 	///				5000ms -> tick_def = 5000 -> 2500ms
@@ -9585,8 +9587,17 @@ t_tick status_get_sc_def(struct block_list *src, struct block_list *bl, enum sc_
 			sc_def2 = status->luk*10 + status_get_lv(bl)*10 - status_get_lv(src)*10;
 			tick_def2 = status->luk*10;
 #else
-			sc_def = status->vit * 100 - levelAdv;
-			tick_def2 = -500;
+			// sc_def = status->vit * 100 - levelAdv;
+			// tick_def2 = -500;
+
+			// DARO: Stun duration is 0.5s vs Mini/MVP
+			if( bl->type == BL_MOB && status_get_class_(bl) == CLASS_BOSS )
+			{
+				tick = 500;
+			} else  // DARO: Stun duration is 3s vs. others
+			{
+				tick = 3000;
+			}
 #endif
 			break;
 		case SC_SILENCE:
@@ -9850,8 +9861,11 @@ t_tick status_get_sc_def(struct block_list *src, struct block_list *bl, enum sc_
 	// Cap minimum rate
 	rate = max(rate, scdb->min_rate);
 
-	if (rate < 10000 && (rate <= 0 || !(rnd()%10000 < rate)))
+	// Check if rate value is not between 0-100%
+	if ( (rate > 10000) || (rate <= 0))
+	{
 		return 0;
+	} 
 
 	// Duration cannot be reduced
 	if (flag&SCSTART_NOTICKDEF)
@@ -9860,6 +9874,7 @@ t_tick status_get_sc_def(struct block_list *src, struct block_list *bl, enum sc_
 	tick -= tick*tick_def/10000;
 
 #ifdef RENEWAL
+	// DARO: Resistance is not applied to duration
 	// Renewal applies item resistance also to duration
 	if (sd) {
 		for (const auto &it : sd->reseff) {
@@ -10061,13 +10076,14 @@ int status_change_start(struct block_list* src, struct block_list* bl,enum sc_ty
 	if (sc->option&OPTION_MADOGEAR && flag&SCSTART_NOAVOID && scdb->flag[SCF_FAILEDMADO])
 		return 0;
 
+	// DARO: MVP/Mini Boss no longer immune to status effects 
 	// Check for Boss resistances
-	if(status->mode&MD_STATUSIMMUNE && !(flag&SCSTART_NOAVOID) && scdb->flag[SCF_BOSSRESIST])
-		return 0;
+	// if(status->mode&MD_STATUSIMMUNE && !(flag&SCSTART_NOAVOID) && scdb->flag[SCF_BOSSRESIST])
+	// 	return 0;
 
-	// Check for MVP resistance
-	if(status->mode&MD_MVP && !(flag&SCSTART_NOAVOID) && scdb->flag[SCF_MVPRESIST])
-		return 0;
+	// // Check for MVP resistance
+	// if(status->mode&MD_MVP && !(flag&SCSTART_NOAVOID) && scdb->flag[SCF_MVPRESIST])
+	// 	return 0;
 
 	// End the SCs from the list and immediately return
 	// If anything in this list is removed, the rest is ignored.
