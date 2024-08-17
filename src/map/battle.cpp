@@ -4572,7 +4572,8 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 	switch(skill_id) {
 		case SM_BASH:
 		case MS_BASH:
-			skillratio += 30 * skill_lv;
+			// 350% at level 10
+			skillratio += 25 * skill_lv;
 			break;
 		case SM_MAGNUM:
 		case MS_MAGNUM:

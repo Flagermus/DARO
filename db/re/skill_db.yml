@@ -189,15 +189,15 @@ Body:
         - Level: 5
           Amount: 8
         - Level: 6
-          Amount: 15
+          Amount: 10
         - Level: 7
-          Amount: 15
+          Amount: 10
         - Level: 8
-          Amount: 15
+          Amount: 10
         - Level: 9
-          Amount: 15
+          Amount: 10
         - Level: 10
-          Amount: 15
+          Amount: 10
       Weapon:
         Fist: true
         Dagger: true
@@ -222,6 +222,7 @@ Body:
         Grenade: true
         Huuma: true
     Status: Stun
+    Cooldown: 3000
   - Id: 6
     Name: SM_PROVOKE
     Description: Provoke
