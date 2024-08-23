@@ -6745,6 +6745,17 @@ static void battle_calc_attack_post_defense(struct Damage* wd, struct block_list
 			break;
 	}
 #endif
+
+// Bash damage increase if Faltal Blow is learned
+#ifdef RENEWAL
+	switch (skill_id) {
+		case SM_BASH:
+			if(sd && pc_checkskill(sd,SM_FATALBLOW)>0)
+				ATK_ADDRATE(wd->damage, wd->damage2, SM_BASH_DAMAGE_INCREASE_IF_SM_FATALBLOW_IS_LEARNED);
+			break;
+	}
+#endif
+
 }
 
 /*=================================================================================

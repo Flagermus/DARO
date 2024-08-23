@@ -44,6 +44,13 @@ class status_change;
 /// Make skill ignore requirement consumption [Muh]
 #define SKILL_NOCONSUME_REQ 0x20
 
+// Skill
+// Fatal Blow
+#define SM_FATALBLOW_STUN_PERCENTAGE_EACH_LEVEL 6
+#define SM_FATALBLOW_STUN_PERCENTAGE(bash_skill_level) \
+((bash_skill_level - 5)*(SM_FATALBLOW_STUN_PERCENTAGE_EACH_LEVEL*100))
+#define SM_BASH_DAMAGE_INCREASE_IF_SM_FATALBLOW_IS_LEARNED 50
+
 /// Constants to identify a skill's nk value (damage properties)
 /// The NK value applies only to non INF_GROUND_SKILL skills
 /// when determining skill castend function to invoke.
