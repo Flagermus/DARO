@@ -5233,7 +5233,7 @@ void status_calc_regen(struct block_list *bl, struct status_data *status, struct
 
 		val = 0;
 		if( (skill=pc_checkskill(sd,SM_RECOVERY)) > 0 )
-			val += skill*5 + skill*status->max_hp/500;
+			val += skill*status->max_hp/200;
 
 		if (sc && sc->count) {
 			if (sc->getSCE(SC_INCREASE_MAXHP))
