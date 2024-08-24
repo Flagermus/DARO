@@ -316,25 +316,25 @@ Body:
     HitCount: 1
     Duration1:
       - Level: 1
-        Time: 10000
+        Time: 30000
       - Level: 2
-        Time: 13000
+        Time: 60000
       - Level: 3
-        Time: 16000
+        Time: 90000
       - Level: 4
-        Time: 19000
+        Time: 120000
       - Level: 5
-        Time: 22000
+        Time: 150000
       - Level: 6
-        Time: 25000
+        Time: 180000
       - Level: 7
-        Time: 28000
+        Time: 210000
       - Level: 8
-        Time: 31000
+        Time: 240000
       - Level: 9
-        Time: 34000
+        Time: 270000
       - Level: 10
-        Time: 37000
+        Time: 300000
     Duration2: 10000
     Cooldown: 10000
     Requires:
