@@ -272,25 +272,25 @@ Body:
     Element: Fire
     SplashArea:
       - Level: 1
-        Area: 2
+        Area: 1
       - Level: 2
-        Area: 2
+        Area: 1
       - Level: 3
         Area: 2
       - Level: 4
         Area: 2
       - Level: 5
-        Area: 2
+        Area: 3
       - Level: 6
-        Area: 2
+        Area: 3
       - Level: 7
-        Area: 2
+        Area: 4
       - Level: 8
-        Area: 2
+        Area: 4
       - Level: 9
-        Area: 2
+        Area: 5
       - Level: 10
-        Area: 2
+        Area: 5
       - Level: 11
         Area: 4
     Knockback: 2
@@ -300,7 +300,7 @@ Body:
         Reproduce: true
     AfterCastActDelay: 500
     Duration2: 10000
-    Cooldown: 2000
+    Cooldown: 3000
     Requires:
       SpCost: 30
     Status: Watk_Element

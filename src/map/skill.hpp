@@ -45,11 +45,14 @@ class status_change;
 #define SKILL_NOCONSUME_REQ 0x20
 
 // Skill
+// Swordman skills
 // Fatal Blow
 #define SM_FATALBLOW_STUN_PERCENTAGE_EACH_LEVEL 6
 #define SM_FATALBLOW_STUN_PERCENTAGE(bash_skill_level) \
 ((bash_skill_level - 5)*(SM_FATALBLOW_STUN_PERCENTAGE_EACH_LEVEL*100))
 #define SM_BASH_DAMAGE_INCREASE_IF_SM_FATALBLOW_IS_LEARNED 50
+// Magnum Break
+#define SM_MAGNUM_FIRE_DAMAGE_INCREASE_DURATION 60000
 
 /// Constants to identify a skill's nk value (damage properties)
 /// The NK value applies only to non INF_GROUND_SKILL skills
