@@ -578,7 +578,7 @@ Body:
       Baby_Soul_Reaper: true
       Star_Emperor2: true
       Baby_Star_Emperor2: true
-    MaxBaseLevel: 200
+    MaxBaseLevel: 99
     BaseExp:
       - Level: 1
         Exp: 548
@@ -1032,7 +1032,7 @@ Body:
       Baby_Royal_Guard2: true
       Baby_Ranger2: true
       Baby_Mechanic2: true
-    MaxBaseLevel: 200
+    MaxBaseLevel: 99
     BaseExp:
       - Level: 1
         Exp: 658
@@ -1437,7 +1437,7 @@ Body:
   - Jobs:
       Summoner: true
       Baby_Summoner: true
-    MaxBaseLevel: 200
+    MaxBaseLevel: 99
     BaseExp:
       - Level: 1
         Exp: 55
@@ -3365,7 +3365,7 @@ Body:
       Night_Watch: true
       Hyper_Novice: true
       Spirit_Handler: true
-    MaxBaseLevel: 260
+    MaxBaseLevel: 99
     BaseExp:
       - Level: 1
         Exp: 658
